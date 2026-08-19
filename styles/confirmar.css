@@ -1,3 +1,4 @@
+CSS
 /* ================= RESET & GERAL ================= */
 * {
   margin: 0;
@@ -35,12 +36,13 @@ body {
   height: auto;
 }
 
-/* ================= 1. HERO / FOTO PRINCIPAL ================= */
+/* ================= 1. HERO (FUNDO BOLINHAS VERDES) ================= */
 .hero-section {
   width: 100%;
-  background-color: #d1ecc5;
-  background-image: radial-gradient(#6fb86b 22%, transparent 22%);
-  background-size: 26px 26px;
+  background-color: #c9e8bb;
+  background-image: radial-gradient(#6fb86b 22%, transparent 23%);
+  background-position: 0 0, 15px 15px;
+  background-size: 30px 30px;
   padding: 50px 20px;
   display: flex;
   justify-content: center;
@@ -66,14 +68,16 @@ body {
   box-shadow: 0 8px 25px rgba(0,0,0,0.12);
 }
 
+/* Moldura Interna com Listras Azul Claro */
 .frame-inner {
   position: relative;
   width: 84%;
   height: 88%;
   border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-  background: repeating-linear-gradient(
+  background-color: #ffffff;
+  background-image: repeating-linear-gradient(
     90deg,
-    #a4d2fb,
+    #a4d2fb 0px,
     #a4d2fb 20px,
     #ffffff 20px,
     #ffffff 40px
@@ -92,16 +96,16 @@ body {
   z-index: 2;
 }
 
-/* ================= 2. SEÇÃO DE CONVITE (INDEX) ================= */
+/* ================= 2. SEÇÃO DE CONFIRMAÇÃO (FUNDO LISTRAS ROSAS) ================= */
 .rsvp-section {
   width: 100%;
-  background-color: #ff8ca3;
+  background-color: #ff85a1;
   background-image: repeating-linear-gradient(
     90deg,
-    #ff7b97,
-    #ff7b97 22px,
-    #ff8ca3 22px,
-    #ff8ca3 44px
+    #ff7595 0px,
+    #ff7595 18px,
+    #ff85a1 18px,
+    #ff85a1 36px
   );
   padding: 50px 20px;
   color: #ffffff;
@@ -184,7 +188,7 @@ body {
   flex-shrink: 0;
 }
 
-/* ================= 3. MAPA ================= */
+/* ================= 3. SEÇÃO DO MAPA ================= */
 .map-section {
   width: 100%;
   background-color: #f7f9fc;
@@ -237,11 +241,14 @@ body {
   transform: translateY(-2px);
 }
 
-/* ================= 4. PRESENTES ================= */
+/* ================= 4. SEÇÃO DE PRESENTES (FUNDO VERDE TEXTURIZADO) ================= */
 .gifts-section {
   width: 100%;
   background-color: #72d98c;
-  background-image: radial-gradient(#5ec77a 18%, transparent 19%);
+  background-image: 
+    radial-gradient(#60c87a 20%, transparent 22%),
+    radial-gradient(#60c87a 20%, transparent 22%);
+  background-position: 0 0, 16px 16px;
   background-size: 32px 32px;
   padding: 50px 20px;
   text-align: center;
@@ -282,14 +289,15 @@ body {
   max-width: 400px;
 }
 
+/* Toldo Listrado */
 .shop-awning {
   height: 55px;
   background: repeating-linear-gradient(
     90deg,
-    #a4d2fb,
-    #a4d2fb 24px,
-    #ffffff 24px,
-    #ffffff 48px
+    #a4d2fb 0px,
+    #a4d2fb 22px,
+    #ffffff 22px,
+    #ffffff 44px
   );
   border-radius: 12px 12px 0 0;
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
@@ -327,6 +335,7 @@ body {
   margin-top: 10px;
 }
 
+/* Cards de Brinquedos e Fundo Azul Suave Inferior */
 .toy-cards-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -403,9 +412,10 @@ body {
 
 /* ================= 6. ESTILOS DO FORMULÁRIO (CONFIRMACAO.HTML) ================= */
 .form-page-body {
-  background-color: #d1ecc5;
-  background-image: radial-gradient(#6fb86b 22%, transparent 22%);
-  background-size: 26px 26px;
+  background-color: #c9e8bb;
+  background-image: radial-gradient(#6fb86b 22%, transparent 23%);
+  background-position: 0 0, 15px 15px;
+  background-size: 30px 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -420,13 +430,13 @@ body {
 }
 
 .form-card {
-  background-color: #ff8ca3;
+  background-color: #ff85a1;
   background-image: repeating-linear-gradient(
     90deg,
-    #ff7b97,
-    #ff7b97 18px,
-    #ff8ca3 18px,
-    #ff8ca3 36px
+    #ff7595 0px,
+    #ff7595 18px,
+    #ff85a1 18px,
+    #ff85a1 36px
   );
   border-radius: 24px;
   padding: 35px 25px;
