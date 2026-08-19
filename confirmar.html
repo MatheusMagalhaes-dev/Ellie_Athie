@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirmação de Presença - Meninas Superpoderosas</title>
+  
+  <!-- Fontes Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Folha de Estilos -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="form-page-body">
+
+  <div class="form-wrapper">
+    
+    <header class="header-logo" style="background: transparent; margin-bottom: 10px;">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/The_Powerpuff_Girls_1998_logo.svg/320px-The_Powerpuff_Girls_1998_logo.svg.png" alt="The Powerpuff Girls">
+    </header>
+
+    <div class="form-card">
+      <h1 class="form-title">Confirmação de Presença</h1>
+      <p class="form-subtitle">Preencha os dados abaixo para confirmar sua participação!</p>
+
+      <form id="rsvpForm" onsubmit="enviarResposta(event)">
+        
+        <!-- Nome e Sobrenome -->
+        <div class="row">
+          <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" required placeholder="Seu nome">
+          </div>
+          <div class="form-group">
+            <label for="sobrenome">Sobrenome:</label>
+            <input type="text" id="sobrenome" required placeholder="Seu sobrenome">
+          </div>
+        </div>
+
+        <!-- Opção: Sim ou Não -->
+        <div class="form-group">
+          <label>Você Vai?</label>
+          <div class="attendance-selector">
+            
+            <div class="radio-card">
+              <input type="radio" id="vai_sim" name="vai" value="Sim" required onchange="tratarSelecao(this.value)">
+              <label for="vai_sim" class="radio-label">Sim</label>
+            </div>
+
+            <div class="radio-card">
+              <input type="radio" id="vai_nao" name="vai" value="Não" required onchange="tratarSelecao(this.value)">
+              <label for="vai_nao" class="radio-label">Não</label>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Se SIM -->
+        <div id="secao-sim">
+          <div class="counter-item">
+            <label for="adultos">Adultos e Adolescentes:</label>
+            <select id="adultos">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6+">6+</option>
+            </select>
+          </div>
+
+          <div class="counter-item">
+            <label for="criancas_6_11">Crianças entre 6 e 11 anos:</label>
+            <select id="criancas_6_11">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4+">4+</option>
+            </select>
+          </div>
+
+          <div class="counter-item">
+            <label for="criancas_ate_5">Crianças até 5 anos:</label>
+            <select id="criancas_ate_5">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4+">4+</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Se NÃO -->
+        <div id="secao-nao">
+          <h4>Obrigado pela confirmação!! ❤️</h4>
+          <p>Sentiremos muito a sua falta nessa celebração superpoderosa!</p>
+        </div>
+
+        <!-- Botão de Envio -->
+        <button type="submit" class="btn-submit">Confirmar Resposta</button>
+
+        <a href="index.html" class="back-link">← Voltar para o convite</a>
+      </form>
+    </div>
+
+  </div>
+
+  <script>
+    // Seleciona automaticamente com base no clique da página anterior (ex: ?resposta=sim)
+    window.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const resposta = params.get('resposta');
+      
+      if (resposta === 'sim') {
+        const radioSim = document.getElementById('vai_sim');
+        radioSim.checked = true;
+        tratarSelecao('Sim');
+      } else if (resposta === 'nao') {
+        const radioNao = document.getElementById('vai_nao');
+        radioNao.checked = true;
+        tratarSelecao('Não');
+      }
+    });
+
+    function tratarSelecao(valor) {
+      const secaoSim = document.getElementById('secao-sim');
+      const secaoNao = document.getElementById('secao-nao');
+
+      if (valor === 'Sim') {
+        secaoSim.style.display = 'block';
+        secaoNao.style.display = 'none';
+      } else if (valor === 'Não') {
+        secaoSim.style.display = 'none';
+        secaoNao.style.display = 'block';
+      }
+    }
+
+    function enviarResposta(event) {
+      event.preventDefault();
+
+      const nome = document.getElementById('nome').value.trim();
+      const sobrenome = document.getElementById('sobrenome').value.trim();
+      const vai = document.querySelector('input[name="vai"]:checked').value;
+
+      let mensagem = `*Confirmação de Presença - Festa Superpoderosa*\n\n`;
+      mensagem += `*Nome:* ${nome} ${sobrenome}\n`;
+      mensagem += `*Vai comparecer?* ${vai}\n`;
+
+      if (vai === 'Sim') {
+        const adultos = document.getElementById('adultos').value;
+        const criancas6a11 = document.getElementById('criancas_6_11').value;
+        const criancasAte5 = document.getElementById('criancas_ate_5').value;
+
+        mensagem += `\n*Detalhes dos Convidados:*\n`;
+        mensagem += `- Adultos / Adolescentes: ${adultos}\n`;
+        mensagem += `- Crianças (6 a 11 anos): ${criancas6a11}\n`;
+        mensagem += `- Crianças (até 5 anos): ${criancasAte5}\n`;
+      } else {
+        mensagem += `\n_Mensagem: Obrigado pela confirmação!!_\n`;
+      }
+
+      // INSIRA SEU WHATSAPP COM DDD:
+      const numeroWhatsApp = "5511999999999"; 
+
+      const urlWhatsApp = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${encodeURIComponent(mensagem)}`;
+      window.open(urlWhatsApp, '_blank');
+    }
+  </script>
+
+</body>
+</html>
