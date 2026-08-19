@@ -3,7 +3,7 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Montserrat', sans-serif;
+      font-family: "SN Pro", sans-serif;
     }
 
     body {
@@ -35,12 +35,297 @@
       height: auto;
     }
 
-    /* ================= 2. HERO / FOTO PRINCIPAL ================= */
-/* ================= 1. HERO / FOTO DA HEROÍNA (SEM CORTES) ================= */
+    /* Seção com o fundo verde de bolinhas */
+.hero-flying-section {
+  width: 100%;
+  min-height: 520px;
+  background-color: #64c278;
+  background-image: radial-gradient(#4eaa62 25%, transparent 25%);
+  background-size: 26px 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  /* Aumentamos o padding superior de 40px para 100px */
+  padding: 100px 15px 40px; 
+  box-sizing: border-box;
+}
+
+/* Palco onde ficam os 3 personagens alinhados */
+.flying-stage {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Container da Ellie */
+.main-character-wrapper {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ellie-img {
+  width: clamp(260px, 40vw, 380px);
+  height: auto;
+  display: block;
+  position: relative;
+  z-index: 5;
+  /* Chama a nova animação de voo */
+  animation: superFly 2.5s ease-in-out infinite alternate;
+}
+
+/* Balão de fala estilo quadrinhos */
+.comic-bubble {
+  position: absolute;
+  top: -30px; /* Reduzimos esse valor para o balão descer e colar mais na cabeça */
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffffff;
+  border: 3px solid #222222;
+  border-radius: 25px;
+  padding: 10px 20px;
+  box-shadow: 4px 4px 0px #222222;
+  z-index: 10;
+  white-space: nowrap;
+  animation: floatBubble 3s ease-in-out infinite alternate;
+}
+
+.comic-bubble span {
+  font-family: 'Fredoka One', 'Montserrat', sans-serif;
+  font-size: clamp(0.85rem, 2.2vw, 1.15rem);
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: absolute;
+  top: -15%; /* Joga o balão para cima da cabeça */
+  left: 50%;
+  transform: translateX(-50%); /* Centraliza perfeitamente no eixo X */
+  background: #ffffff;
+  border: 3px solid #222222;
+  border-radius: 25px;
+  padding: 10px 20px;
+  box-shadow: 4px 4px 0px #222222;
+  z-index: 10;
+  white-space: nowrap;
+  animation: floatBubble 3s ease-in-out infinite alternate;
+}
+
+/* Ponta do balão apontando para a boca */
+.comic-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -15px; /* Empurra a setinha bem para fora do balão */
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 15px 12px 0 12px;
+  border-style: solid;
+  border-color: #ffffff transparent transparent transparent;
+  display: block;
+  width: 0;
+  height: 0; /* Garante que o triângulo se forme perfeitamente */
+  z-index: 2;
+}
+
+.comic-bubble::before {
+  content: '';
+  position: absolute;
+  bottom: -21px; /* Fica um pouco mais abaixo para fazer o contorno preto */
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 19px 15px 0 15px;
+  border-style: solid;
+  border-color: #222222 transparent transparent transparent;
+  display: block;
+  width: 0;
+  height: 0;
+  z-index: 1;
+}
+
+/* Slots Laterais para Florzinha e Lindinha */
+.character-slot {
+  position: absolute;
+  z-index: 2;
+}
+
+.char-img {
+  width: clamp(90px, 16vw, 150px);
+  height: auto;
+  filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.15));
+  width: clamp(100px, 15vw, 150px); /* Define o tamanho menor que a Ellie */
+  height: 150px; /* Trava a altura para que ambas fiquem do mesmo tamanho */
+  object-fit: contain; /* Garante que a imagem não estique ou distorça */
+  filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.15));
+}
+
+/* Posição Lindinha (Esquerda, voando mais baixo) */
+.slot-lindinha {
+  left: 5%;
+  bottom: 15%;
+  animation: floatSide 2.6s ease-in-out infinite alternate;
+  .char-img {
+  /* Aumentando o tamanho base e responsivo */
+  width: clamp(140px, 22vw, 220px); /* antes estava clamp(90px, 16vw, 150px) */
+  height: auto;
+  left: 2%;
+  top: 50%;
+  animation: floatSide 2.6s ease-in-out infinite alternate;
+}
+}
+
+/* Posição Florzinha (Direita, voando mais alto) */
+.slot-florzinha {
+  right: 5%;
+  top: 10%;
+  animation: floatSide 3.4s ease-in-out infinite alternate-reverse;
+  .char-img {
+  /* Aumentando o tamanho base e responsivo */
+  width: clamp(140px, 22vw, 220px); /* antes estava clamp(90px, 16vw, 150px) */
+  height: auto;
+  right: 2%;
+  top: 45%; /* Um pouquinho mais alta devido ao fogo do voo */
+  animation: floatSide 3.4s ease-in-out infinite alternate-reverse;
+}
+}
+
+
+/* Animações de levitação */
+@keyframes floatMain {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-12px); }
+}
+
+@keyframes floatBubble {
+  0% { transform: translateX(-50%) translateY(0px) rotate(-1deg); }
+  100% { transform: translateX(-50%) translateY(-10px) rotate(1deg); }
+}
+
+@keyframes floatSide {
+  0% { transform: translateY(0px) rotate(2deg); }
+  100% { transform: translateY(-16px) rotate(-2deg); }
+}
+@keyframes superFly {
+  0% { 
+    transform: translateY(0px) rotate(0deg); 
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.15)); /* Sombra mais perto */
+  }
+  100% { 
+    transform: translateY(-25px) rotate(2deg); /* Sobe mais e dá uma leve inclinada de voo */
+    filter: drop-shadow(0 30px 25px rgba(0, 0, 0, 0.25)); /* Sombra afasta, dando efeito 3D de altura */
+  }
+}
+
+/* Ajustes para Telas Mobile */
+@media (max-width: 600px) {
+  .comic-bubble {
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: none;
+  }
+
+  .comic-bubble::after {
+    right: 50%;
+    bottom: -12px;
+  }
+  
+  .comic-bubble::before {
+    right: 49%;
+    bottom: -16px;
+  }
+
+  .slot-lindinha {
+    left: 0%;
+    bottom: 5%;
+  }
+
+  .slot-florzinha {
+    right: 0%;
+    top: 5%;
+  }
+}
+/* Container da Seção do Timer */
+.countdown-section {
+ width: 100%;
+      background-color: #ff8ca3;
+      background-image: repeating-linear-gradient(
+        90deg,
+        #ff7b97,
+        #ff7b97 22px,
+        #ff8ca3 22px,
+        #ff8ca3 44px
+      );
+      padding: 50px 20px;
+      color: #ffffff;
+}
+
+.countdown-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.countdown-title {
+  color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.1rem, 2.8vw, 1.5rem);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 22px;
+  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Grid dos Cartões */
+.timer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(8px, 2vw, 16px);
+}
+
+.timer-card {
+  background: #ffffff;
+  border: 3px solid #72d98c;
+  border-radius: 16px;
+  padding: 12px 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 12px rgba(255, 105, 180, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.timer-card:hover {
+  transform: translateY(-3px);
+}
+
+.timer-number {
+  font-family: 'Fredoka One', 'Montserrat', sans-serif;
+  font-size: clamp(1.4rem, 4vw, 2.2rem);
+  font-weight: 900;
+  color: #ff528c;
+  line-height: 1.1;
+}
+
+.timer-label {
+  font-size: clamp(0.65rem, 1.6vw, 0.85rem);
+  font-weight: 800;
+  color: #72D98C;
+  text-transform: uppercase;
+  margin-top: 4px;
+  letter-spacing: 0.5px;
+}
+
 .hero-section {
   width: 100%;
-  background-color: #c9e8bb;
-  background-image: radial-gradient(#6fb86b 22%, transparent 23%);
+  background-color: #72d98c;
+  background-image: radial-gradient(#5ec77a 22%, transparent 23%);
   background-position: 0 0, 15px 15px;
   background-size: 30px 30px;
   padding: 30px 15px;
@@ -262,136 +547,93 @@
       margin-bottom: 15px;
     }
 
-    .btn-pill {
-      display: inline-block;
-      background-color: #ff65a3;
-      color: #ffffff;
-      padding: 10px 24px;
-      border-radius: 30px;
-      font-size: clamp(0.8rem, 1.8vw, 1rem);
-      font-weight: 700;
-      text-decoration: none;
-      margin-bottom: 35px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: transform 0.2s, background-color 0.2s;
-    }
-
-    .btn-pill:hover {
-      background-color: #e55390;
-      transform: translateY(-2px);
-    }
-
-    .shop-stand {
-      position: relative;
-      margin: 0 auto 30px;
+    .gifts{
       width: 100%;
-      max-width: 400px;
+      background-color: #72d98c;
+      background-image: radial-gradient(#5ec77a 18%, transparent 19%);
+      background-size: 32px 32px;
+      padding: 50px 20px;
+      text-align: center;
     }
 
-    .shop-awning {
-      height: 55px;
-      background: repeating-linear-gradient(
-        90deg,
-        #a4d2fb,
-        #a4d2fb 24px,
-        #ffffff 24px,
-        #ffffff 48px
-      );
-      border-radius: 12px 12px 0 0;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    }
-
-    .shop-base {
-      background-color: #ffbed3;
-      min-height: 120px;
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      border-radius: 0 0 10px 10px;
-    }
-
-    .shop-badge {
-      position: absolute;
-      top: -18px;
-      background-color: #ff65a3;
-      color: #fff;
-      padding: 6px 24px;
-      border-radius: 20px;
-      font-family: 'Fredoka One', cursive;
-      font-size: clamp(0.85rem, 1.8vw, 1rem);
-      border: 2px solid #ffffff;
-    }
-
-    .shop-photo {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid #ffffff;
-      margin-top: 10px;
-    }
-
-    .toy-cards-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .toy-card {
-      background-color: #ffb8cd;
-      border: 2.5px solid #ff65a3;
-      border-radius: 16px;
-      padding: 12px 10px 16px;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-      min-height: 140px;
-      transition: transform 0.2s;
-    }
-
-    .toy-card:hover {
-      transform: translateY(-4px);
-    }
-
-    .toy-number {
-      position: absolute;
-      top: 6px;
-      right: 10px;
-      font-size: clamp(0.7rem, 1.5vw, 0.9rem);
-      font-weight: 800;
-      color: #555555;
-    }
-
-    .toy-img {
-      max-width: 75%;
-      max-height: 80px;
-      margin: auto 0;
-      object-fit: contain;
-    }
-
-    .toy-line {
-      width: 80%;
-      height: 3px;
-      background-color: #ff65a3;
-      margin-top: 8px;
-      border-radius: 2px;
-    }
-
-    .gifts-disclaimer {
+    .list-discleimer {
       color: #ffffff;
-      font-size: clamp(0.7rem, 1.6vw, 0.9rem);
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      margin-top: 30px;
-      line-height: 1.5;
-      text-transform: uppercase;
+      text-align: center;
     }
+
+    .title-list {
+      color: #ffffff;
+      font-weight: 500;
+      font-size: clamp(1.0rem, 4vw, 2.0rem);
+    }
+
+    /* CSS: Estilização do Card de Presentes */
+.gift-mission-card {
+  background-color: #ffffff;
+  border: 3px solid #ff7da7;
+  border-radius: 20px;
+  padding: clamp(16px, 4vw, 24px);
+  max-width: 500px;
+  margin: 20px auto;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+  text-align: left;
+}
+
+.mission-title {
+  color: #ff528c;
+  font-family: 'Fredoka One', 'Montserrat', sans-serif;
+  font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.mission-intro {
+  color: #555555;
+  font-size: clamp(0.85rem, 2vw, 0.95rem);
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 14px;
+}
+
+.mission-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mission-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: clamp(0.85rem, 2vw, 0.95rem);
+  color: #444444;
+  line-height: 1.4;
+}
+
+.mission-list strong {
+  color: #ff528c;
+}
+
+.bullet-icon {
+  font-size: 1.1rem;
+  line-height: 1.2;
+}
+
+.mission-note {
+  background-color: #fff2f6;
+  border-left: 4px solid #ff7da7;
+  padding: 8px 12px;
+  border-radius: 0 8px 8px 0;
+  font-size: clamp(0.75rem, 1.8vw, 0.85rem);
+  font-weight: 600;
+  color: #777777;
+  font-style: italic;
+  margin: 0;
+}
+
 
     /* ================= 6. FOOTER BANNER ================= */
     .footer-banner {
@@ -402,7 +644,7 @@
 
     .footer-banner img {
       width: 100%;
-      max-height: 360px;
+      max-height: 720px;
       object-fit: cover;
       display: block;
     }

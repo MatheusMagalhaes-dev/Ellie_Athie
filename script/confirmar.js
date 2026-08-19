@@ -81,13 +81,26 @@ document.addEventListener('DOMContentLoaded', () => {
           body: JSON.stringify({ data: [dados] })
         });
 
-        if (respostaEnvio.ok) {
-          alert("Confirmação registrada com sucesso! Muito obrigado!");
-          window.location.href = "index.html";
+       if (respostaEnvio.ok) {
+        // Pega os elementos de texto da nossa caixinha
+        const tituloModal = document.getElementById('modal-title-text');
+        const textoModal = document.getElementById('modal-desc-text');
+
+        // Verifica se a pessoa marcou "Sim" ou "Não" e muda a mensagem
+        if (vai === "Sim") {
+            tituloModal.innerText = "Missão Cumprida! 🦸‍♀️";
+            textoModal.innerText = "Sua presença superpoderosa foi confirmada com sucesso! Nos vemos na festa!";
         } else {
-          throw new Error('Erro na resposta do SheetDB');
+            tituloModal.innerText = "Puxa vida... 🥺";
+            textoModal.innerText = "Sentiremos muito a sua falta na nossa celebração superpoderosa! Obrigado por avisar.";
         }
 
+        // Agora sim, mostra a caixinha com o texto correto
+        document.getElementById("custom-alert").style.display = "flex";
+        
+    } else {
+        throw new Error('Erro na resposta do SheetDB');
+    }
       } catch (err) {
         console.error("Erro ao enviar:", err);
         alert("Erro ao enviar confirmação. Tente novamente.");
@@ -96,4 +109,13 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+ // Aguarda o clique no botão FECHAR do modal
+document.getElementById("fechar-modal-btn").addEventListener("click", function() {
+    // Esconde o pop-up
+    document.getElementById("custom-alert").style.display = "none";
+    
+    // Redireciona para o index
+    window.location.href = "index.html"; 
+});
+
 });

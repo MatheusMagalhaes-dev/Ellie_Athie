@@ -4,7 +4,7 @@ CSS
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "SN Pro", sans-serif;
 }
 
 body {
@@ -149,7 +149,7 @@ body {
   flex: 1;
   padding: 12px 0;
   border-radius: 30px;
-  background-color: #ff9d00;
+  background-color: #5ec77a;
   color: #ffffff;
   font-size: clamp(0.9rem, 2vw, 1.1rem);
   font-weight: 800;
@@ -161,7 +161,7 @@ body {
 }
 
 .btn:hover {
-  background-color: #e68d00;
+  background-color: #5ec77a;
   transform: translateY(-3px);
   box-shadow: 0 6px 14px rgba(0,0,0,0.2);
 }
@@ -412,8 +412,8 @@ body {
 
 /* ================= 6. ESTILOS DO FORMULÁRIO (CONFIRMACAO.HTML) ================= */
 .form-page-body {
-  background-color: #c9e8bb;
-  background-image: radial-gradient(#6fb86b 22%, transparent 23%);
+  background-color: #64c278;
+  background-image: radial-gradient(#4eaa62 22%, transparent 23%);
   background-position: 0 0, 15px 15px;
   background-size: 30px 30px;
   display: flex;
@@ -545,7 +545,7 @@ input[type="text"]:focus, select:focus {
   display: block;
   text-align: center;
   padding: 12px;
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: #ff7595;
   border: 2px solid #ffffff;
   border-radius: 14px;
   font-weight: 800;
@@ -565,7 +565,7 @@ input[type="text"]:focus, select:focus {
 
 #secao-sim {
   display: none;
-  background: rgba(255, 255, 255, 0.15);
+  background-color: #ff7595;
   padding: 20px;
   border-radius: 16px;
   margin-top: 20px;
@@ -599,7 +599,7 @@ input[type="text"]:focus, select:focus {
 
 #secao-nao {
   display: none;
-  background: rgba(255, 255, 255, 0.2);
+  background-color: #ff7595;
   padding: 20px;
   border-radius: 16px;
   margin-top: 20px;
@@ -708,6 +708,59 @@ input[type="text"], select {
   outline: none;
 }
 
+/* Fundo escuro atrás do pop-up */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* A caixinha do pop-up */
+.modal-box {
+  background-color: #ffffff;
+  border: 4px solid #ff7da7;
+  border-radius: 20px;
+  padding: 30px 20px;
+  text-align: center;
+  max-width: 320px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  animation: popIn 0.3s ease-out;
+}
+
+.modal-title {
+  color: #d62262;
+  font-family: 'Fredoka One', sans-serif;
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.modal-text {
+  color: #555;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.btn-fechar {
+  background-color: #64c278;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-5px); }
   to { opacity: 1; transform: translateY(0); }
@@ -744,7 +797,7 @@ input[type="text"], select {
   }
   .frame-wrapper {
     width: 320px;
-    height: 440px;
+    height: 4200px;
     aspect-ratio: auto;
   }
 }
