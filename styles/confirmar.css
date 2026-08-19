@@ -428,6 +428,16 @@ body {
   padding: 15px;
   margin: 15px auto;
   box-sizing: border-box;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .form-card {
@@ -662,6 +672,11 @@ input[type="text"]:focus, select:focus {
   color: #ffffff;
   position: relative;
   box-sizing: border-box;
+  .form-card {
+  width: 100%;
+  max-width: 420px; /* Largura ideal para ficar bonito em PC/Tablet */
+  margin: 0 auto;
+}
 }
 
 /* Linha com os dois campos (Nome e Sobrenome) */
