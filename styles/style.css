@@ -36,62 +36,68 @@
     }
 
     /* ================= 2. HERO / FOTO PRINCIPAL ================= */
-    .hero-section {
-      width: 100%;
-      background-color: #d1ecc5;
-      background-image: radial-gradient(#6fb86b 22%, transparent 22%);
-      background-size: 26px 26px;
-      padding: 50px 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+/* ================= 1. HERO / FOTO DA HEROÍNA (SEM CORTES) ================= */
+.hero-section {
+  width: 100%;
+  background-color: #c9e8bb;
+  background-image: radial-gradient(#6fb86b 22%, transparent 23%);
+  background-position: 0 0, 15px 15px;
+  background-size: 30px 30px;
+  padding: 30px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden;
+}
 
-    .frame-wrapper {
-      position: relative;
-      width: clamp(260px, 35vw, 360px);
-      height: clamp(360px, 48vw, 490px);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+.frame-wrapper {
+  position: relative;
+  /* Largura dinâmica que respeita telas pequenas de celular */
+  width: min(85vw, 320px);
+  aspect-ratio: 3 / 4.2; /* Mantém a proporção exata sem distorcer ou estourar */
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
 
-    .scallop-border {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: #ff65a3;
-      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-      border: 10px dotted #ff65a3;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
-    }
+.scallop-border {
+  position: absolute;
+  inset: 0;
+  background: #ff65a3;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  border: 8px dotted #ff65a3;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
 
-    .frame-inner {
-      position: relative;
-      width: 84%;
-      height: 88%;
-      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-      background: repeating-linear-gradient(
-        90deg,
-        #a4d2fb,
-        #a4d2fb 20px,
-        #ffffff 20px,
-        #ffffff 40px
-      );
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+.frame-inner {
+  position: relative;
+  width: 86%;
+  height: 90%;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  background-color: #ffffff;
+  background-image: repeating-linear-gradient(
+    90deg,
+    #a4d2fb 0px,
+    #a4d2fb 16px,
+    #ffffff 16px,
+    #ffffff 32px
+  );
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    .frame-inner img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      position: relative;
-      z-index: 2;
-    }
-
+.frame-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Garante que toda a menina apareça sem cortes na cabeça ou pés */
+  position: relative;
+  z-index: 2;
+}
     /* ================= 3. CONFIRMAÇÃO DE PRESENÇA ================= */
     .rsvp-section, .map-section {
       width: 100%;

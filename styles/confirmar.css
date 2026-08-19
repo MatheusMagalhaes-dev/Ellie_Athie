@@ -424,12 +424,15 @@ body {
 
 .form-wrapper {
   width: 100%;
-  max-width: 600px;
-  padding: 20px;
-  margin: 30px auto;
+  max-width: 500px;
+  padding: 15px;
+  margin: 15px auto;
+  box-sizing: border-box;
 }
 
 .form-card {
+  width: 100%;
+  box-sizing: border-box;
   background-color: #ff85a1;
   background-image: repeating-linear-gradient(
     90deg,
@@ -438,46 +441,52 @@ body {
     #ff85a1 18px,
     #ff85a1 36px
   );
-  border-radius: 24px;
-  padding: 35px 25px;
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+  padding: 25px 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   border: 4px solid #ffffff;
   color: #ffffff;
   position: relative;
 }
 
-.form-title {
-  font-weight: 900;
-  font-size: clamp(1.4rem, 3.5vw, 1.9rem);
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 10px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
-}
-
-.form-subtitle {
-  text-align: center;
-  font-size: 0.9rem;
+/* Inputs de texto e selects com 16px no mínimo para evitar zoom no celular */
+input[type="text"], 
+select {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 2px solid #ffffff;
+  background-color: #ffffff;
+  color: #333333;
+  font-size: 16px !important; /* Essencial: previne o auto-zoom do Safari/iOS e Chrome Android */
   font-weight: 600;
-  margin-bottom: 25px;
-  opacity: 0.95;
+  outline: none;
+  -webkit-appearance: none; /* Remove estilos padrão estranhos do iOS */
 }
 
-.form-group {
-  margin-bottom: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
+/* Linha responsiva de inputs */
 .row {
   display: flex;
-  gap: 15px;
+  flex-direction: column; /* No mobile fica um embaixo do outro */
+  gap: 12px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .row .form-group {
-  flex: 1;
+  width: 100%;
+  min-width: 0;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 label {
@@ -707,6 +716,21 @@ input[type="text"], select {
   }
   .toy-img {
     max-height: 100px;
+  }
+}
+
+@media (min-width: 600px) {
+  .row {
+    flex-direction: row;
+    gap: 15px;
+  }
+  .row .form-group {
+    flex: 1 1 0;
+  }
+  .frame-wrapper {
+    width: 320px;
+    height: 440px;
+    aspect-ratio: auto;
   }
 }
 
